@@ -1,5 +1,5 @@
 .bg-index{
-  background: url("..jpg") no-repeat
+  background: url("moviesstore/static/img/background.jpg") no-repeat
     fixed;
   background-size: 100% auto;
 }
