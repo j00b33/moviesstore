@@ -1,40 +1,202 @@
-.bg-index{
-  background: url("../img/background.jpg") no-repeat fixed;
-  background-size: 100% auto;
+body {
+  overflow: auto;
+  background-color: #fefaec;
 }
-.navbar a.nav-link {
-  color: #FFFEF6 !important;
+
+.headerWrapper {
+  background-color: #fefaec;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-right: 70px;
+  padding-left: 150px;
+  padding-top: 10px;
 }
+<<<<<<< HEAD
 .bg-dark {
   background-color: #121010 !important;
+=======
+
+.naviagorDiv {
+  font-size: 12pt;
+  font-family: "Inter";
+  color: #f38181;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 120px;
+>>>>>>> b16a536493f6ba5fd792f7649b3ebfce663a0d2d
 }
-.ms-footer {
-  background-color: #202020;
+
+.divisionWrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+
+  box-sizing: border-box;
 }
-.ms-footer p {
-  color: #7F7F7F;
-  font-size: 13px;
+
+.logsignWrapper {
+  background-color: #fefaec;
+
+  padding-left: 200px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+  flex: 1; /* Both sections take 50% of the width */
+  height: 100%;
 }
-.ms-footer a:hover {
-  color: #6ab43e;
-  text-decoration: none;
+
+.rightWrapper {
+  background-color: #f38181;
+  flex: 1;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
 }
-.ms-footer-bottom span{
-  font-size: 13px;
-  line-height: 38px;
+
+.largeName {
+  font-size: 100pt;
+  font-family: "Passion One";
+  width: 300px;
+  margin-bottom: 50px;
+  margin-right: 50px;
+
+  text-align: right;
+  line-height: 0.8;
+  color: #fefaec;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
 }
-.ms-footer-bottom a {
-  color: #6ab43e;
-  text-decoration: none;
+
+#logintitle {
+  font-size: 70pt;
+  font-family: "Passion One";
+  color: #f38181;
 }
-.ms-footer-bottom a:hover {
-  color: #fff;
+
+#userinput {
+  width: 470px;
+  height: 50px;
+  font-size: 16pt;
+  border-radius: 30px;
+  border: 3px solid #f38181;
+
+  padding-left: 30px;
+  margin-bottom: 18px;
+
+  font-family: "Inter";
+
+  background-color: #fefaec;
 }
-.img-card-200 {
-  width: fit-content;
-  max-height: 200px;
+
+.loginbutton {
+  color: #625772;
+  font-size: 16pt;
+  font-family: "Inter";
+  font-weight: 600;
+
+  width: 470px;
+  height: 50px;
+
+  margin-top: 30px;
+
+  border-radius: 30px;
+  border: 3px solid #625772;
+  background-color: #a9eee6;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
-.img-card-400 {
-  width: fit-content;
-  max-height: 400px;
+.loginbutton:hover {
+  color: #a9eee6;
+  border: 3px solid #a9eee6;
+  background-color: #625772;
+  transition: 0.5s;
+}
+
+#buttonWrapper {
+  width: 470px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#signupRow {
+  margin-top: 13px;
+  font-size: 12px;
+  color: grey;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.gosignup {
+  margin-left: 8px;
+  color: #f38181;
+}
+.gosignup:hover {
+  color: #f38181;
+  text-decoration: underline;
+  transition: 0.5s;
+}
+
+#id_username {
+  width: 470px;
+  height: 50px;
+  font-size: 16pt;
+  border-radius: 30px;
+  border: 3px solid #f38181;
+
+  padding-left: 30px;
+  margin-bottom: 18px;
+
+  font-family: "Inter";
+
+  background-color: #fefaec;
+}
+
+#id_password1 {
+  width: 470px;
+  height: 50px;
+  font-size: 16pt;
+  border-radius: 30px;
+  border: 3px solid #f38181;
+
+  padding-left: 30px;
+  margin-bottom: 18px;
+
+  font-family: "Inter";
+
+  background-color: #fefaec;
+}
+
+#id_password2 {
+  width: 470px;
+  height: 50px;
+  font-size: 16pt;
+  border-radius: 30px;
+  border: 3px solid #f38181;
+
+  padding-left: 30px;
+  margin-bottom: 18px;
+
+  font-family: "Inter";
+
+  background-color: #fefaec;
 }
