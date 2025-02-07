@@ -11,6 +11,11 @@ class CustomErrorList(ErrorList):
 class CustomUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)  # Corrected the call to super
+        placeholders = {
+            'username': 'Enter your username',
+            'password1': 'Enter a strong password',
+            'password2': 'Confirm your password'
+        }
         for fieldname in ['username', 'password1', 'password2']:
             self.fields[fieldname].help_text = None
-            self.fields[fieldname].widget.attrs.update({'class': 'form-control'})
+            self.fields[fieldname].widget.attrs.update({'class': 'form-control', 'placeholder': placeholders[fieldname]})

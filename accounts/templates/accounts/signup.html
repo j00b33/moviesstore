@@ -1,22 +1,49 @@
 {% extends 'base.html' %} {% block content %}
-<div class="loginContainer">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <!-- <div class="card shadow p-3 mb-4 rounded">
-          <div class="card-body"> -->
-            <div id="logintitle">Sign Up!</div>
+<div class="divisionWrapper">
+  <div class="logsignWrapper">
+    <!-- <div class="container"> -->
 
-            <form method="POST" >
-              {% csrf_token %} {{ template_data.form.as_p }}
-              <button type="submit" class="loginbutton"">
-                Sign Up
-              </button>
-            </form>
+    <div id="logintitle">Sign Up!</div>
+
+    <!-- <form method="POST" >
+                {% csrf_token %}
+
+                  {{ template_data.form.as_p }}
+
+                <button type="submit" class="loginbutton"">
+                  Sign Up
+                </button>
+              </form> -->
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <div>
+        {% for field in template_data.form %}
+        <div class="form-group">
+          {{ field }} {% if field.errors %}
+          <div class="error-message">
+            {% for error in field.errors %} {{ error }} {% endfor %}
           </div>
+          {% endif %}
         </div>
+        {% endfor %}
       </div>
+
+      <button type="submit" class="loginbutton">Sign Up</button>
+    </form>
+    <!-- </div> -->
+  </div>
+
+  <div class="rightWrapper">
+    <div>
+      <img
+        src="/static/img/popcorn.png"
+        style="margin-right: 300px; height: 400px"
+        alt="Popcorn"
+      />
     </div>
+    <div class="largeName">GT Movie Store</div>
   </div>
 </div>
 {% endblock content %}
