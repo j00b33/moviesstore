@@ -1,41 +1,62 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
-<div class="p-3">
+<div class="p-3" style="margin-top:30px; font-family:Inter">
   <div class="container">
     <div class="row mt-3">
       <div class="col-md-6 mx-auto mb-3">
-        <h2>{{ template_data.movie.name }}</h2>
+
+        <div class="movieDetailTitle">{{ template_data.movie.name }}</div>
         <hr />
-        <p><b>Description:</b>{{template_data.movie.description}}</p>
-        <p><b>Price:</b> ${{template_data.movie.price}}</p>
+
+        <div class="infoBox">
+          <div class="infoText">Description</div>
+          <div>{{template_data.movie.description}}</div>
+        </div>
+
+        <div class="infoBox">
+          <div class="infoText" >Price</div>
+          <div class="description">${{template_data.movie.price}}</div>
+        </div>
+
+
+
        <p class="card-text">
           <form method="post"
             action="{% url 'cart.add' id=template_data.movie.id %}">
             <div class="row">
               {% csrf_token %}
               <div class="col-auto">
-                <div class="input-group col-auto">
-                  <div class="input-group-text">Quantity
-                    </div>
-                  <input type="number" min="1" max="10"
-                    class="form-control quantity-input"
-                    name="quantity" value="1">
+                <div class="infoBox">
+                  <div class="infoText">Quantity</div>
+
+                  <div class="infoInner">
+                    <input type="number" min="1" max="10"
+                      class="form-control quantity-input"
+                      name="quantity" value="1">
+
+                    <button class="submitBtn" style="width: 105px;height: 30px"
+                      type="submit">Add to cart</button>
+                  </div>
                 </div>
               </div>
-              <div class="col-auto">
-                <button class="btn bg-dark text-white"
-                  type="submit">Add to cart</button>
-              </div>
+
             </div>
           </form>
         </p>
-        <h2>Reviews</h2>
-        <hr />
+
+
+        <div class="infoText">Reviews</div>
         <ul class="list-group">
           {% for review in template_data.reviews %}
           <li class="list-group-item pb-3 pt-3">
-            <h5 class="card-title">Review by {{ review.user.username }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ review.date }}</h6>
+
+            <div class="reviewHeader">
+              <div class="card-title" style="font-size: 16px; font-weight: 600; color:#f38181">{{ review.user.username }}</div>
+              <div class="card-subtitle mb-2 text-muted" style="font-size: 12px;">{{ review.date }}</div>
+            </div>
+
             <p class="card-text">{{ review.comment }}</p>
+
+
             {% if user.is_authenticated and user == review.user %}
             <a
               class="btn btn-primary"
@@ -51,20 +72,19 @@
           </li>
           {% endfor %}
         </ul>
+
+
         {% if user.is_authenticated %}
         <div class="container mt-4">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <div class="card shadow p-3 mb-4 rounded">
                 <div class="card-body">
-                  <b class="text-start">Create a review </b><br /><br />
+
                   <form
                     method="POST"
                     action="{% url 'movies.create_review' id=template_data.movie.id %}"
                   >
                     {% csrf_token %}
                     <p>
-                      <label for="comment">Comment:</label>
+                      <label for="comment">Add a review</label>
                       <textarea
                         name="comment"
                         required
@@ -73,24 +93,24 @@
                       ></textarea>
                     </p>
                     <div class="text-center">
-                      <button type="submit" class="btn bg-dark text-white">
-                        Add Review
+                      <button type="submit" class="submitBtn">
+                        Post
                       </button>
                     </div>
                   </form>
                 </div>
-              </div>
-            </div>
-          </div>
         </div>
         {% endif %}
+
+
       </div>
-      <div class="col-md-6 mx-auto mb-3 text-center">
+      <!-- <div class="col-md-6 mx-auto mb-3 text-center"> -->
         <img
           src="{{ template_data.movie.image.url }}"
-          class="rounded img-card-400"
+          class="rounded img-card-300"
+          style="height: 700px; width: auto; object-fit: cover;"
         />
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </div>

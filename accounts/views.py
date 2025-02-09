@@ -21,12 +21,12 @@ def login(request):
             password = request.POST['password']
         )
         if user is None:
-            template_data['error'] = 'The username or password is incorrect.'
+            template_data['error'] = '* The username or password is incorrect.'
             return render(request, 'accounts/login.html',
                 {'template_data': template_data})
         else:
             auth_login(request, user)
-            return redirect('accounts.login')
+            return redirect('home.index')
 
 def signup(request):
     template_data = {}
@@ -36,7 +36,7 @@ def signup(request):
         return render(request, 'accounts/signup.html',
             {'template_data': template_data})
     elif request.method == 'POST':
-        form = CustomUserCreationForm(request.POST, 
+        form = CustomUserCreationForm(request.POST,
         error_class=CustomErrorList)
         if form.is_valid():
             form.save()

@@ -14,10 +14,6 @@ body {
   padding-left: 150px;
   padding-top: 10px;
 }
-<<<<<<< HEAD
-.bg-dark {
-  background-color: #121010 !important;
-=======
 
 .naviagorDiv {
   font-size: 12pt;
@@ -27,10 +23,11 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  margin-right: 80px;
+}
 
-  width: 120px;
->>>>>>> b16a536493f6ba5fd792f7649b3ebfce663a0d2d
+.navicons {
+  margin-right: 10px;
 }
 
 .divisionWrapper {
@@ -199,4 +196,178 @@ body {
   font-family: "Inter";
 
   background-color: #fefaec;
+}
+
+.searchWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchInput {
+  border: none;
+  border-bottom: 1px solid #f38181;
+  width: 500px;
+  background-color: #fefaec;
+  outline: none;
+}
+
+/* Movie List =================> */
+
+.pageTitle {
+  font-size: 40pt;
+  font-family: "Passion One";
+  color: #f38181;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.moviesWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.movieCard {
+  width: 200px;
+  height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-right: 10px;
+  margin-left: 10px;
+
+  border: 3px solid #625772;
+  border-radius: 13px;
+  background-color: #fefaec;
+
+  padding: 10px;
+}
+
+.movieName {
+  font-family: "Inter";
+  font-size: 16px;
+  font-weight: 600;
+
+  width: 170px;
+  color: #625772;
+
+  text-decoration: none;
+}
+
+.movieCard:hover {
+  border: 3px solid #f38181;
+  box-shadow: 10px 10px 2px 1px #dfb2b2;
+  transition: 0.4s;
+}
+
+.movieName:hover {
+  color: #f38181;
+  transition: 0.4s;
+}
+
+/* Movie Show Page ======================> */
+.movieDetailWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.innerWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: green;
+}
+
+.movieDetailTitle {
+  font-size: 35px;
+  font-family: "Inter";
+  font-weight: 600;
+  color: #625772;
+}
+
+.infoBox {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 20px;
+}
+
+.infoInner {
+  width: 175px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity-input {
+  width: 55px;
+  border: none;
+  border-bottom: 2px solid #625772;
+  background-color: #fefaec;
+  border-radius: 0px;
+}
+
+.infoText {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 15px;
+}
+
+.submitBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border: 3px solid #625772;
+  border-radius: 10px;
+  background-color: #a9eee6;
+
+  color: #625772;
+  font-weight: 500;
+}
+
+.submitBtn:hover {
+  color: #a9eee6;
+  border: 3px solid #a9eee6;
+  background-color: #625772;
+  transition: 0.4s;
+}
+
+.list-group {
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.list-group-item {
+  background-color: #fefaec;
+}
+
+.reviewHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
