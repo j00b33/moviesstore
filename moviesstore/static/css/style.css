@@ -235,12 +235,13 @@ body {
   justify-content: center;
 
   flex-wrap: wrap;
-  gap: 30px;
+
+  gap: 40px 20px;
 }
 
 .movieCard {
   width: 200px;
-  height: 300px;
+  height: 295px;
 
   display: flex;
   flex-direction: column;
@@ -250,9 +251,11 @@ body {
   margin-right: 10px;
   margin-left: 10px;
 
-  border: 3px solid #625772;
-  border-radius: 13px;
+  border: 2px solid #625772;
+  border-radius: 10px;
   background-color: #fefaec;
+
+  color: #625772;
 
   padding: 10px;
 }
@@ -260,7 +263,6 @@ body {
 .movieName {
   font-family: "Inter";
   font-size: 16px;
-  font-weight: 600;
 
   width: 170px;
   color: #625772;
@@ -269,14 +271,16 @@ body {
 }
 
 .movieCard:hover {
-  border: 3px solid #f38181;
-  box-shadow: 10px 10px 2px 1px #dfb2b2;
-  transition: 0.4s;
+  border: 2px solid #f38181;
+  box-shadow: 10px 10px 2px 1px #eed4d4;
+  transition: 0.3s;
+  color: #f38181;
 }
 
 .movieName:hover {
   color: #f38181;
-  transition: 0.4s;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
 /* Movie Show Page ======================> */
@@ -291,8 +295,6 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  background-color: green;
 }
 
 .movieDetailTitle {
@@ -341,18 +343,18 @@ body {
   justify-content: center;
   align-items: center;
 
-  border: 3px solid #625772;
+  border: 1px solid #6c757d;
   border-radius: 10px;
-  background-color: #a9eee6;
+  background-color: #fefaec;
 
-  color: #625772;
+  color: #6c757d;
   font-weight: 500;
 }
 
 .submitBtn:hover {
-  color: #a9eee6;
-  border: 3px solid #a9eee6;
-  background-color: #625772;
+  color: #fefaec;
+  border: 1px solid #6c757d;
+  background-color: #6c757d;
   transition: 0.4s;
 }
 
