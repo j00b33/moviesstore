@@ -98,32 +98,79 @@ body {
   background-color: #fefaec;
 }
 
+/* Button Color Change ===========> */
 .loginbutton {
-  color: #625772;
   font-size: 16pt;
   font-family: "Inter";
   font-weight: 600;
 
   width: 470px;
   height: 50px;
-
   margin-top: 30px;
-
   border-radius: 30px;
   border: 3px solid #625772;
   background-color: #a9eee6;
+  color: #625772;
 
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+
+  position: relative;
+  overflow: hidden;
+  transition: border 0.4s ease-in-out, background-color 0.4s ease-in-out;
 }
-.loginbutton:hover {
-  color: #a9eee6;
-  border: 3px solid #a9eee6;
+
+/* Animation */
+.loginbutton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
   background-color: #625772;
-  transition: 0.5s;
+  transition: width 0.4s ease-in-out;
+  z-index: 1;
 }
+
+/* fill up when hovered */
+.loginbutton:hover::before {
+  width: 100%;
+}
+
+.loginbutton::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #a9eee6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  z-index: 2;
+}
+
+.loginbutton:hover::after {
+  opacity: 1;
+}
+
+.loginbutton span {
+  position: relative;
+  z-index: 3;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.loginbutton:hover span {
+  opacity: 0;
+}
+/* ================== */
 
 #buttonWrapper {
   width: 470px;
