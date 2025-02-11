@@ -35,7 +35,7 @@ body {
   font-family: "Inter";
   
   border: 2px solid #f38181;
-width: 90px;
+  width: 60px;
 
   display: flex;
   flex-direction: row;
