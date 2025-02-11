@@ -81,12 +81,19 @@
             />
           </a>
           <!-- <div class="navicons">Welocome, {{user.username }}!</div> -->
-          <a class="nav-link navicons" href="{% url 'accounts.logout' %}">
+          <!-- <a class="nav-link navicons" href="{% url 'accounts.logout' %}">
             <img src="{% static 'img/logout.png' %}" style="height: 23px" />
+          </a> -->
+
+          <a class="nav-link navicons" href="{% url 'accounts.logout' %}">
+            <div class="navlogbtn">Log out</div>
           </a>
           {% else %}
-          <a class="nav-link navicons" href="{% url 'accounts.login' %}">
+          <!-- <a class="nav-link navicons" href="{% url 'accounts.login' %}">
             <img src="{% static 'img/login.png' %}" style="height: 23px" />
+          </a> -->
+          <a class="nav-link navicons" href="{% url 'accounts.login' %}">
+            <div class="navlogbtn">Log in</div>
           </a>
           {% endif %}
         </div>
