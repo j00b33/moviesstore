@@ -31,15 +31,14 @@
     </div>
     <div class="row">
       <div class="text-end">
-        <a class="btn btn-outline-secondary mb-2"
-          ><b>Total to pay:</b> ${{ template_data.cart_total }}</a
-        >
+        <div>
+          <b>Total to pay:</b> ${{ template_data.cart_total }}</div>
         {% if template_data.movies_in_cart|length > 0 %}
-        <a href="{% url 'cart.purchase' %}" class="btn bg-dark text-white mb-2"
+        <a href="{% url 'cart.purchase' %}" class="btn text-white mb-2" style="background-color: #f38181;font-family: Inter;"
           >Purchase
         </a>
         <a href="{% url 'cart.clear' %}">
-          <button class="btn btn-danger mb-2">
+          <button class="btn mb-2" style="background-color: grey;font-family: Inter; color:white">
             Remove all movies from Cart
           </button>
         </a>
