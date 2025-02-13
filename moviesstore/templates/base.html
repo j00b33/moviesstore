@@ -69,18 +69,18 @@
           <a class="nav-link me-4 navicons" href="{% url 'movies.index' %}">
             <img src="{% static 'img/movies.png' %}" style="height: 23px" />
           </a>
+          
+
+          {% if user.is_authenticated %}
           <a class="nav-link me-4 navicons" href="{% url 'cart.index' %}">
             <img src="{% static 'img/cart.png' %}" style="height: 23px" />
           </a>
-
-          {% if user.is_authenticated %}
           <a class="nav-link navicons" href="{% url 'accounts.orders' %}">
             <img
               src="{% static 'img/order.png' %}"
               style="height: 23px; margin-right: 10px"
             />
           </a>
-          <!-- <div class="navicons">Welocome, {{user.username }}!</div> -->
           <a class="nav-link navicons" href="{% url 'accounts.logout' %}">
             <img src="{% static 'img/logout.png' %}" style="height: 23px" />
           </a>
