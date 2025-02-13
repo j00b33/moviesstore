@@ -37,16 +37,16 @@
           Log in
         </button>
 
+        <div id="resetRow">
+          <a class="nav-link goreset" href="{% url 'accounts.reset' %}"
+            >Forgot password?</a>
+        </div>
         <div id="signupRow">
           <div>Don't have an account?</div>
           <a class="nav-link gosignup" href="{% url 'accounts.signup' %}"
             >Sign up now!</a>
         </div>
-        <div id="resetRow">
-          <div>Forgot your password</div>
-          <a class="nav-link goreset" href="{% url 'accounts.reset' %}"
-            >Reset Pasword now!</a>
-        </div>
+
       </div>
     </form>
   </div>

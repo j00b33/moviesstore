@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  {% load static %}
+  {% load static %} 
   <head>
     <title>GTMS</title>
 
@@ -49,8 +49,8 @@
     />
   </head>
   <body>
+    {% if 'login' not in request.path and 'signup' not in request.path and 'reset' not in request.path %}
     <div>
-      {% if request.path != '/accounts/' %}
       <div class="headerWrapper">
         <a class="navbar-brand" href="{% url 'movies.index' %}">
           <img src="{% static 'img/logo.png' %}" alt="logo" height="40" />
@@ -96,9 +96,7 @@
         </div>
       </div>
       {% endif %}
-
-      <!-- Header -->
-      <div>{% block content %} {% endblock content %}</div>
     </div>
+    {% block content %} {% endblock content %}
   </body>
 </html>

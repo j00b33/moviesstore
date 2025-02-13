@@ -1,16 +1,30 @@
-<form method="post">
-    {% csrf_token %}
-    <h2>Reset Password</h2>
-    
-    <label for="username">Username:</label>
-    <input type="text" name="username" required>
-    
-    <label for="new_password">New Password:</label>
-    <input type="password" name="new_password" required>
+{% extends 'base.html' %} {% block content %} {% load static %}
+<div class="divisionWrapper">
+  <div class="logsignWrapper">
+    <div id="logintitle" style="color:#625772">Reset Password</div>
 
-    <button type="submit">Reset Password</button>
-</form>
+              <form method="POST">
+                {% csrf_token %}
+                <input placeholder="Enter your username" id="userinput" style="border: 3px solid #625772" type="text" name="username" required>
+                <input placeholder="Enter your new password" id="userinput" style="border: 3px solid #625772" type="password" name="new_password" required>
+    
+                <button type="submit" class="loginbutton" data-text="Save">Save</button>
+            </form>
 
-{% if template_data.error %}
-    <p style="color:red;">{{ template_data.error }}</p>
-{% endif %}
+            {% if template_data.error %}
+            <p style="color:red;">{{ template_data.error }}</p>
+            {% endif %}
+  </div>
+
+  <div class="rightWrapper" style="background-color: #625772;">
+    <div>
+      <img
+        src="{% static 'img/popcorn.png' %}"
+        style="margin-right: 300px; height: 400px"
+      />
+    </div>
+    <div class="largeName">GT Movie Store</div>
+  </div>
+</div>
+{% endblock content %}
+
