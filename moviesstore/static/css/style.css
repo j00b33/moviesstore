@@ -15,6 +15,15 @@ body {
   padding-top: 10px;
 }
 
+
+.logoWrapper{
+  width: 150px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .naviagorDiv {
   font-size: 12pt;
   font-family: "Inter";
@@ -64,7 +73,7 @@ body {
   background-color: #fefaec;
 
   padding-left: 200px;
-  padding-top: 180px;
+  padding-top: 140px;
   padding-bottom: 100px;
 
   flex: 1; /* Both sections take 50% of the width */
@@ -476,4 +485,37 @@ body {
   font-family: "Inter";
   font-size: 14px;
   color:#5f5f5f;
+}
+
+
+
+/* About Page ================> */
+.aboutWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutTitle{
+  margin-top: 20px;
+  font-size: 80pt;
+  font-family: "Passion One";
+  color: #625772;
+}
+
+.aboutSub{
+  font-size: 30pt;
+  font-family: "Passion One";
+  color: #625772;
+  margin-top: -50px;
+}
+
+
+.aboutText{
+  font-family: "Inter";
+  font-size: 16px;
+  margin-top: 10px;
+  width: 1200px;
+  color: #625772;
 }

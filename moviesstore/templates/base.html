@@ -52,9 +52,14 @@
     {% if 'login' not in request.path and 'signup' not in request.path and 'reset' not in request.path %}
     <div>
       <div class="headerWrapper">
-        <a class="navbar-brand" href="{% url 'movies.index' %}">
-          <img src="{% static 'img/logo.png' %}" alt="logo" height="40" />
-        </a>
+        <div class="logoWrapper">
+          <a class="navbar-brand" href="{% url 'movies.index' %}">
+            <img src="{% static 'img/logo.png' %}" alt="logo" height="40" />
+          </a>
+          <a class="nav-link navicons" href="{% url 'home.about' %}">
+            <img src="{% static 'img/about.png' %}" style="height: 20px" />
+          </a>
+      </div>
 
         <form method="GET">
           <div class="input-group searchWrapper">
