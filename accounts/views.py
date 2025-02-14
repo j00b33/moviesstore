@@ -5,6 +5,8 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
+from .models import UserProfile
+
 @login_required
 def logout(request):
     auth_logout(request)
@@ -20,7 +22,7 @@ def login(request):
         user = authenticate(
             request,
             username = request.POST['username'],
-            password = request.POST['password']
+            password = request.POST['password'],
         )
         if user is None:
             template_data['error'] = '* The username or password is incorrect.'
@@ -33,21 +35,37 @@ def login(request):
 def signup(request):
     template_data = {}
     template_data['title'] = 'Sign Up'
-    if request.method == 'GET':
-        template_data['form'] = CustomUserCreationForm()
-        return render(request, 'accounts/signup.html',
-            {'template_data': template_data})
-    elif request.method == 'POST':
-        form = CustomUserCreationForm(request.POST,
-        error_class=CustomErrorList)
-        if form.is_valid():
-            form.save()
-            return redirect('movies.index')
-        else:
-            template_data['form'] = form
-            return render(request, 'accounts/signup.html',
-                {'template_data': template_data})
 
+    if request.method == 'GET':
+        # On GET, display the form to the user
+        template_data['form'] = CustomUserCreationForm()
+        return render(request, 'accounts/signup.html', {'template_data': template_data})
+
+    elif request.method == 'POST':
+        # On POST, handle the form submission
+        form = CustomUserCreationForm(request.POST, error_class=CustomErrorList)
+
+        if form.is_valid():
+            # Save the user object first
+            user = form.save()
+
+            # Now create a UserProfile and save the security question and answer
+            user_profile, created = UserProfile.objects.get_or_create(user=user)
+
+            # Update the UserProfile with the security question and answer
+            user_profile.security_question = form.cleaned_data['security_question']
+            user_profile.security_answer = form.cleaned_data['security_answer']
+            user_profile.save()
+            # Optionally log the user in after account creation
+            auth_login(request, user)
+
+            # Success message and redirect
+            messages.success(request, 'Account created successfully.')
+            return redirect('movies.index')  # Or your desired page
+        else:
+            # If the form is invalid, return the form with errors
+            template_data['form'] = form
+            return render(request, 'accounts/signup.html', {'template_data': template_data})
 
 @login_required
 def orders(request):
@@ -63,7 +81,6 @@ def reset(request):
     template_data['title'] = 'Reset Password'
 
     if request.method == 'GET':
-        # Instantiate the form
         form = PasswordResetForm()
         return render(request, 'accounts/reset.html', {'template_data': template_data, 'form': form})
 
@@ -73,17 +90,30 @@ def reset(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             new_password = form.cleaned_data['new_password']
-            
+            security_answer = form.cleaned_data.get('security_answer')
+
             try:
                 user = User.objects.get(username=username)
-                user.delete()
-                
-                new_user = User.objects.create_user(username=username, password=new_password)
-                auth_login(request, new_user)
-                messages.success(request, 'Your password has been reset successfully.')
-                return redirect('movies.index')
+                # Assuming the security question and answer are stored in a UserProfile or another place
+                user_profile = user.userprofile  # Assuming you have a UserProfile model for this
+
+                # Strip leading/trailing spaces and compare case-insensitively
+                stored_answer = user_profile.security_answer.strip().lower()
+                user_answer = security_answer.strip().lower()
+
+                if user_answer == stored_answer:
+                    # Answer is correct, reset password
+                    user.set_password(new_password)
+                    user.save()
+                    auth_login(request, user)
+                    messages.success(request, 'Your password has been reset successfully.')
+                    return redirect('movies.index')
+                else:
+                    print("Stored Answer:", user_profile.security_answer)
+                    print("User Answer:", user_answer)
+                    template_data['error'] = '* The security answer is incorrect.'
+                    return render(request, 'accounts/reset.html', {'template_data': template_data, 'form': form})
+
             except User.DoesNotExist:
                 template_data['error'] = '* No account found with that username.'
                 return render(request, 'accounts/reset.html', {'template_data': template_data, 'form': form})
-
-# Create your views here.
