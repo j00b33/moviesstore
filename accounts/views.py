@@ -6,13 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import UserProfile
-#SIGNUP FUNCTION AT 35 - 69, RESET PASSWORD FUNCTION (i think this works) IS 81 - END
-#THIS IS WHERE THE MAIN PROBLEM IS AT
-#IN THE SIGNUP FUNCTION, THE PRINT STATEMENTS SHOW THAT BOTH THE FORM AND THE USERPROFILE
-#CORRECTLY SAVE THE SECURITY QUESTION/ANSWER. HOWEVER, IF YOU TRY TO DO RESET, THE PRINT STATEMENT
-#THERE SHOWS THAT THERE IS NO SECURITY QUESTION/ANSWER SAVED. ALSO, IF YOU MANUALLY LOOK IN THE ADMIN PANEL,
-#THE SECURITY QUESTION AND ANSWER ARE NOT SAVED AFTER LOGIN. IF YOU MANUALLY ENTER A SECURITY QUESTION/ANSWER,
-#THESE WILL SHOW UP CORRECTLY AND WILL BE SHOWN BY THE PRINT STATEMENT IN THE RESET PASSWORD FUNCTION.
+#Changed from user-input security question to hardcoded question: "What is your favorite movie"
+#User's answer is now stored in User.first_name field instead of a separate field
 @login_required
 def logout(request):
     auth_logout(request)

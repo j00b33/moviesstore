@@ -37,12 +37,11 @@ class PasswordResetForm(forms.Form):
     username = forms.CharField(
         max_length=150,
         required=True,
-        widget=forms.TextInput(attrs={'placeholder': 'Username'})
-    )
+        widget=forms.TextInput(attrs={'placeholder': 'Username'}))
     new_password = forms.CharField(
+        max_length=150,
         widget=forms.PasswordInput(attrs={'placeholder': 'New Password'}),
-        required=True
-    )
+        required=True)
     security_answer = forms.CharField(
         max_length=255,
         required=True,
