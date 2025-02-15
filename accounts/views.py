@@ -6,7 +6,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import UserProfile
-
+#SIGNUP FUNCTION AT 35 - 69, RESET PASSWORD FUNCTION (i think this works) IS 81 - END
+#THIS IS WHERE THE MAIN PROBLEM IS AT
+#IN THE SIGNUP FUNCTION, THE PRINT STATEMENTS SHOW THAT BOTH THE FORM AND THE USERPROFILE
+#CORRECTLY SAVE THE SECURITY QUESTION/ANSWER. HOWEVER, IF YOU TRY TO DO RESET, THE PRINT STATEMENT
+#THERE SHOWS THAT THERE IS NO SECURITY QUESTION/ANSWER SAVED. ALSO, IF YOU MANUALLY LOOK IN THE ADMIN PANEL,
+#THE SECURITY QUESTION AND ANSWER ARE NOT SAVED AFTER LOGIN. IF YOU MANUALLY ENTER A SECURITY QUESTION/ANSWER,
+#THESE WILL SHOW UP CORRECTLY AND WILL BE SHOWN BY THE PRINT STATEMENT IN THE RESET PASSWORD FUNCTION.
 @login_required
 def logout(request):
     auth_logout(request)
@@ -42,28 +48,29 @@ def signup(request):
         return render(request, 'accounts/signup.html', {'template_data': template_data})
 
     elif request.method == 'POST':
-        # On POST, handle the form submission
         form = CustomUserCreationForm(request.POST, error_class=CustomErrorList)
 
         if form.is_valid():
-            # Save the user object first
             user = form.save()
 
             # Now create a UserProfile and save the security question and answer
             user_profile, created = UserProfile.objects.get_or_create(user=user)
-
             # Update the UserProfile with the security question and answer
-            user_profile.security_question = form.cleaned_data['security_question']
-            user_profile.security_answer = form.cleaned_data['security_answer']
+            user_profile.security_question = form['security_question']
+            user_profile.security_answer = form['security_answer']
             user_profile.save()
-            # Optionally log the user in after account creation
+            #Security question and answer are both processed correctly, it just dont save
+            #THIS IS THE PART THATS BROKE AND ITS ANNOYING AS SHIT
+            print(form['security_question'])
+            print(form['security_answer'])
+            print(user_profile.security_question)
+            print(user_profile.security_answer)
+
             auth_login(request, user)
 
-            # Success message and redirect
             messages.success(request, 'Account created successfully.')
-            return redirect('movies.index')  # Or your desired page
+            return redirect('movies.index')  
         else:
-            # If the form is invalid, return the form with errors
             template_data['form'] = form
             return render(request, 'accounts/signup.html', {'template_data': template_data})
 
@@ -72,6 +79,7 @@ def orders(request):
     template_data = {}
     template_data['title'] = 'Orders'
     template_data['orders'] = request.user.order_set.all()
+    print(request.user.userprofile.security_question)
     return render(request, 'accounts/orders.html',
         {'template_data': template_data})
 
@@ -94,21 +102,19 @@ def reset(request):
 
             try:
                 user = User.objects.get(username=username)
-                # Assuming the security question and answer are stored in a UserProfile or another place
-                user_profile = user.userprofile  # Assuming you have a UserProfile model for this
+                user_profile = user.userprofile  
 
-                # Strip leading/trailing spaces and compare case-insensitively
                 stored_answer = user_profile.security_answer.strip().lower()
                 user_answer = security_answer.strip().lower()
 
                 if user_answer == stored_answer:
-                    # Answer is correct, reset password
                     user.set_password(new_password)
                     user.save()
                     auth_login(request, user)
                     messages.success(request, 'Your password has been reset successfully.')
                     return redirect('movies.index')
                 else:
+                    #The entered user answer is correct, the user_profile security answer is empty when checking in admin
                     print("Stored Answer:", user_profile.security_answer)
                     print("User Answer:", user_answer)
                     template_data['error'] = '* The security answer is incorrect.'

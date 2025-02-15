@@ -3,7 +3,7 @@ from django.forms.utils import ErrorList
 from django.utils.safestring import mark_safe
 from django import forms
 from .models import UserProfile
-
+#THE FORM IS CORRECT, IT IS CHECKED IN VIEWS.PY WITH THE PRINT STATEMENTS
 class CustomUserCreationForm(UserCreationForm):
     security_question = forms.CharField(max_length=255, required=True, widget=forms.TextInput(attrs={'placeholder': 'Security Question'}))
     security_answer = forms.CharField(max_length=255, required=True, widget=forms.TextInput(attrs={'placeholder': 'Security Answer'}))
