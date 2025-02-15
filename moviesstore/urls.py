@@ -16,16 +16,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
 from django.conf.urls.static import static
 from django.conf import settings
+=======
+>>>>>>> 2d8d7379ff945c4af224060bc4b8edd596a37b39
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('home.urls')),
+<<<<<<< HEAD
     path('', include('movies.urls')),
     path('movies/', include('movies.urls')),
     path('accounts/', include('accounts.urls')),
     path('cart/', include('cart.urls')),
+=======
+>>>>>>> 2d8d7379ff945c4af224060bc4b8edd596a37b39
 ]
 urlpatterns += static(settings.MEDIA_URL,
     document_root=settings.MEDIA_ROOT)
