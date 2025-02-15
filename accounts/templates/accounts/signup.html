@@ -1,7 +1,8 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
 <div class="divisionWrapper">
   <div class="logsignWrapper">
-
     <div id="logintitle">Sign Up!</div>
 
     <form method="POST">
@@ -10,7 +11,11 @@
       <div>
         {% for field in template_data.form %}
         <div class="form-group">
-          {{ field }} {% if field.errors %}
+          {% if field.name == 'first_name' %}
+            <div class="security-question-label">Security Question: What is your favorite movie?</div>
+          {% endif %}
+          {{ field }}
+          {% if field.errors %}
           <div class="error-message">
             {% for error in field.errors %} {{ error }} {% endfor %}
           </div>

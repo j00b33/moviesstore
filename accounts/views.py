@@ -38,12 +38,12 @@ def login(request):
             auth_login(request, user)
             return redirect('movies.index')
 
+
 def signup(request):
     template_data = {}
     template_data['title'] = 'Sign Up'
 
     if request.method == 'GET':
-        # On GET, display the form to the user
         template_data['form'] = CustomUserCreationForm()
         return render(request, 'accounts/signup.html', {'template_data': template_data})
 
@@ -51,25 +51,26 @@ def signup(request):
         form = CustomUserCreationForm(request.POST, error_class=CustomErrorList)
 
         if form.is_valid():
-            user = form.save()
+            # Save the user with the security answer in first_name
+            user = form.save(commit=False)
+            user.first_name = form.cleaned_data['first_name']  # This will store the security answer
+            user.save()
 
-            # Now create a UserProfile and save the security question and answer
-            user_profile, created = UserProfile.objects.get_or_create(user=user)
-            # Update the UserProfile with the security question and answer
-            user_profile.security_question = form['security_question']
-            user_profile.security_answer = form['security_answer']
-            user_profile.save()
-            #Security question and answer are both processed correctly, it just dont save
-            #THIS IS THE PART THATS BROKE AND ITS ANNOYING AS SHIT
-            print(form['security_question'])
-            print(form['security_answer'])
-            print(user_profile.security_question)
-            print(user_profile.security_answer)
+            # Create profile with hardcoded question
+            user_profile, created = UserProfile.objects.update_or_create(
+                user=user,
+                defaults={
+                    'security_question': "What is your favorite movie",
+                    'security_answer': user.first_name  # Using first_name as the answer
+                }
+            )
 
+            # Log the user in
             auth_login(request, user)
 
-            messages.success(request, 'Account created successfully.')
+            messages.success(request, 'Account created successfully!')
             return redirect('movies.index')
+
         else:
             template_data['form'] = form
             return render(request, 'accounts/signup.html', {'template_data': template_data})
