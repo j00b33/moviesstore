@@ -15,6 +15,15 @@ body {
   padding-top: 10px;
 }
 
+
+.logoWrapper{
+  width: 150px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .naviagorDiv {
   font-size: 12pt;
   font-family: "Inter";
@@ -30,6 +39,28 @@ body {
   margin-right: 10px;
 }
 
+.navlogbtn{
+  font-size: 16px;
+  font-family: "Inter";
+  
+  border: 2px solid #f38181;
+  width: 60px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 10px;
+}
+
+.navlogbtn:hover{
+  background-color: #f38181;
+  color: #fefaec;
+
+  transition: 0.3s;
+}
+
 .divisionWrapper {
   display: flex;
   width: 100%;
@@ -42,7 +73,7 @@ body {
   background-color: #fefaec;
 
   padding-left: 200px;
-  padding-top: 100px;
+  padding-top: 140px;
   padding-bottom: 100px;
 
   flex: 1; /* Both sections take 50% of the width */
@@ -75,6 +106,8 @@ body {
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-between;
+
+  cursor: pointer;
 }
 
 #logintitle {
@@ -181,7 +214,7 @@ body {
 }
 
 #signupRow {
-  margin-top: 13px;
+
   font-size: 12px;
   color: grey;
   display: flex;
@@ -198,6 +231,17 @@ body {
   color: #f38181;
   text-decoration: underline;
   transition: 0.5s;
+}
+
+.goreset {
+  font-size: 12px;
+  color: grey;
+  margin-top: 13px;
+}
+.goreset:hover {
+  color: #f38181;
+  text-decoration: underline;
+  transition: 0.4s;
 }
 
 #id_username {
@@ -345,9 +389,9 @@ body {
 }
 
 .movieDetailTitle {
-  font-size: 35px;
+  font-size: 37px;
   font-family: "Inter";
-  font-weight: 600;
+  font-weight: 650;
   color: #625772;
 }
 
@@ -419,4 +463,59 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+
+/* Purchase Completed */
+.purchaseWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 130px;
+}
+
+.purchaseTitle {
+  font-family: "Passion One";
+  font-size: 60px;
+  color:#f38181;
+}
+
+.purchaseText {
+  font-family: "Inter";
+  font-size: 14px;
+  color:#5f5f5f;
+}
+
+
+
+/* About Page ================> */
+.aboutWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutTitle{
+  margin-top: 20px;
+  font-size: 80pt;
+  font-family: "Passion One";
+  color: #625772;
+}
+
+.aboutSub{
+  font-size: 30pt;
+  font-family: "Passion One";
+  color: #625772;
+  margin-top: -50px;
+}
+
+
+.aboutText{
+  font-family: "Inter";
+  font-size: 16px;
+  margin-top: 10px;
+  width: 1200px;
+  color: #625772;
 }

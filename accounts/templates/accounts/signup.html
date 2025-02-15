@@ -1,19 +1,8 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 <div class="divisionWrapper">
   <div class="logsignWrapper">
-    <!-- <div class="container"> -->
 
     <div id="logintitle">Sign Up!</div>
-
-    <!-- <form method="POST" >
-                {% csrf_token %}
-
-                  {{ template_data.form.as_p }}
-
-                <button type="submit" class="loginbutton"">
-                  Sign Up
-                </button>
-              </form> -->
 
     <form method="POST">
       {% csrf_token %}
@@ -34,7 +23,6 @@
         Sign Up
       </button>
     </form>
-    <!-- </div> -->
   </div>
 
   <div class="rightWrapper">
@@ -44,7 +32,7 @@
         style="margin-right: 300px; height: 400px"
       />
     </div>
-    <div class="largeName">GT Movie Store</div>
+    <a class="largeName" href="{% url 'movies.index' %}" style="text-decoration: none;">GT Movie Store</a>
   </div>
 </div>
 {% endblock content %}
