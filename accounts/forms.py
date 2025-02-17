@@ -17,12 +17,12 @@ class CustomUserCreationForm(UserCreationForm):
             'username': 'Enter your username',
             'password1': 'Enter a strong password',
             'password2': 'Confirm your password',
-            'first_name': 'Your favorite movie'
+            'first_name': 'Enter your favorite movie'
         }
         for fieldname in ['username', 'password1', 'password2', 'first_name']:
             self.fields[fieldname].help_text = None
             self.fields[fieldname].widget.attrs.update({
-                'class': 'form-control',
+                'class': 'form-control security-question-input',
                 'placeholder': placeholders[fieldname]
             })
 
@@ -45,5 +45,5 @@ class PasswordResetForm(forms.Form):
     security_answer = forms.CharField(
         max_length=255,
         required=True,
-        widget=forms.TextInput(attrs={'placeholder': 'Your favorite movie'})
+        widget=forms.TextInput(attrs={'placeholder': 'Enter your favorite movie'})
     )

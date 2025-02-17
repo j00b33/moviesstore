@@ -57,12 +57,14 @@
 
             {% if user.is_authenticated and user == review.user %}
             <a
-              class="btn btn-primary"
+              class="btn"
+              style="background-color: #897e9b; color: white"
               href="{% url 'movies.edit_review' id=template_data.movie.id review_id=review.id %}"
               >Edit
             </a>
             <a
-              class="btn btn-danger"
+              class="btn"
+              style="background-color: grey; color:white"
               href="{% url 'movies.delete_review' id=template_data.movie.id review_id=review.id %}"
               >Delete
             </a>

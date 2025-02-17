@@ -289,6 +289,29 @@ body {
   background-color: #fefaec;
 }
 
+.security-question-input {
+  width: 470px;
+  height: 50px;
+  font-size: 16pt;
+  border-radius: 30px;
+  border: 3px solid #fbbcbc;
+
+  padding-left: 30px;
+  margin-bottom: 18px;
+
+  font-family: "Inter";
+
+  background-color: #fefaec;
+}
+
+.securityLabel{
+  font-size:14px;
+  font-family: "Inter";
+  color:#625772;
+
+  margin-left: 10px;
+}
+
 .searchWrapper {
   display: flex;
   flex-direction: row;

@@ -12,7 +12,7 @@
         {% for field in template_data.form %}
         <div class="form-group">
           {% if field.name == 'first_name' %}
-            <div class="security-question-label">Security Question: What is your favorite movie?</div>
+            <div class="securityLabel">Security Question</div>
           {% endif %}
           {{ field }}
           {% if field.errors %}
