@@ -16,7 +16,7 @@
       
       <!-- Security question input -->
       {% if form.security_answer %}
-        <div style="margin-top: 10px;">
+        <div style="margin-top: 10px; display:flex; flex-direction: column">
           <label for="security_answer" style="color:#625772;margin-left: 10px">2 Factor Authentication</label>
           <input placeholder="Your favorite movie" id="userinput" style="border: 3px solid #625772" type="text" name="security_answer" required>
         </div>
